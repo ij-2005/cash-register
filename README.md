@@ -1,4 +1,15 @@
-Hello! 4th certification project for the freeCodeCamp frontEnd certificate. 
---
-Faced a wall while doing this (burnout), so the styles is not that good and the javascript is not really that optimal.
-Will do beter for the last certification project!
+# Front End Certification Project #4 – *freeCodeCamp*
+
+Hey there! 👋  
+This is my 4th project for the freeCodeCamp Front End Development Certification.
+
+## Notes
+
+Hit a bit of a burnout wall during this one, so:
+
+- The styling is a bit rough.
+- JavaScript isn't as clean or optimized as it could be.
+
+---
+
+regardless, thanks for stopping by!
