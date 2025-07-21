@@ -5,8 +5,10 @@ window.onload = function() {
 const cashStatus = document.querySelector(".status-cashier");
 const cashInput = document.getElementById("cash");
 const purchaseBtn = document.getElementById("purchase-btn");
+const changeDues = document.getElementById("change-due");
+const priceDisplay = document.getElementById("total");
 
-let price = 1.87;
+let price = 3.26;
 let cid = [
   ['PENNY', 1.01],
   ['NICKEL', 2.05],
@@ -18,7 +20,6 @@ let cid = [
   ['TWENTY', 60],
   ['ONE HUNDRED', 100]
 ];
-
 const currencyUnits = {
   "PENNY": 0.01,
   "NICKEL": 0.05,
@@ -46,6 +47,24 @@ function updateStatus(){
     <p>Twenties: $${cid[7][1]}</p>
     <p>Hundreds: $${cid[8][1]}</p>`;
 
+    priceDisplay.innerHTML = `Total: $${price}`;
+
+}
+
+function changeDue(result){
+    changeDues.innerHTML = "";
+    changeDues.innerHTML += `<p>STATUS: ${result.status}</p>`;
+
+    if(Array.isArray(result.change)){
+        console.log("change exists!");
+        result.change.forEach(element => {
+        changeDues.innerHTML += `<p>${element.name}: $${element.amount}`;
+    });
+    }else{
+        console.log("array doesn't exist");
+    }
+
+
 }
 
 const overallCid = (array)=>{
@@ -66,13 +85,13 @@ const changeLogic = () => {
     console.log(overallCash);
     let change = Number(cashInput.value) - price;
 
+
     if(overallCash < change){
 
-        console.log("Status: Insufficient_Funds");
+        return {status: "INSUFFICIENT_FUNDS", change: []};
 
-    }else if(overallCash > change){
+    }else if(overallCash > change || overallCash === change){
         console.log("Doing the change process.")
-
         for(let i = cid.length - 1; i >= 0; i--){
 
         let unit = currencyUnits[cid[i][0]]; // for the values
@@ -85,19 +104,28 @@ const changeLogic = () => {
 
             if(howMuchGive > 0){
                 cid[i][1] -= howMuchGive;
+                cid[i][1] = Math.round(cid[i][1] * 100) / 100;
                 change = Math.round((change - howMuchGive) * 100) / 100;
                 changes.push({name: `${cid[i][0]}`, amount: howMuchGive});
             }
         }
 
+        if(overallCid(cid) === 0){
+            return {status: "CLOSED", change: changes};
+        }
+
         if(change !== 0){
                 return {status: "INSUFFICIENT_FUNDS", change: []};
         }else{
+            console.log("logged open.");
             return { status: "OPEN", change: changes };
         }
 
-    }else{
-        return { status: "CLOSED", change: cid };
+        
+
+    }else if(overallCid(cid) === change){
+        console.log("returned early else");
+        return { status: "CLOSED", change: [] };
     }
 
 }
@@ -107,9 +135,18 @@ const changeLogic = () => {
 // listeners
 
 purchaseBtn.addEventListener('click',()=>{
+
+    if(Number(cashInput.value) < price){
+        alert("Customer does not have enough money to purchase the item");
+    }else if(Number(cashInput.value) === price){
+        changeDues.innerHTML = "<p>No change due - customer paid with exact cash</p>";
+    }else{
+        const result = changeLogic();
+        updateStatus();
+        changeDue(result);
+    }
+
+    cashInput.value = "";
     
-    const result = changeLogic();
-    console.log(result);
-    updateStatus();
 
 });
