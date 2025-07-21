@@ -3,31 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>cash-register</title>
 </head>
 
 <body id="main-body">
-<main>
-  <section class="header-section">
-  <header>
-    <h1>Certification Project</h1>
-  </header>
-  </section>
-  <div id="change-due">
 
-  </div>
-  <p>Enter Cash from customer:</p>
-  <input type="number" id="cash"required/>
-  <button id="purchase-btn">Purchase</button>
-  <h2 id="total">Total: $1.87</h2>
-  <div class="status-cashier">
-    <h3>Change in drawer:</h3>
-  </div>
-  <footer>
-    <p>By <a href="https://github.com/ij-2005" target="_blank">IJ2005</a></p>
-  </footer>
+  <main>
+    <section class="header-section">
+
+    <header>
+      <h1>FreeCodeCamp</h1>
+      <h1>Certification Project</h1>
+    </header>
+
+    </section>
+
+    
+
+    <div class="main-display">
+
+      <div id="change-due"></div>
+
+      <p>Enter Cash from customer:</p>
+
+      <div class="input-btns">
+        <input type="number" id="cash"required/>
+        <button id="purchase-btn">Purchase</button>
+
+      </div>
+      <h2 id="total"></h2>
+
+      <div class="prices">
+        <h3>Change in drawer:</h3>
+        <div class="status-cashier">
+        </div>
+      </div>
+    </div>]
+   </main>
+    
+    <footer>
+      <p><a href="https://github.com/ij-2005" target="_blank">IJ2005 <i class="fa-brands fa-github"></i></a></p>
+    </footer>
+ 
 </body>
-</main>
 <script src="script.js"></script>
 </html>
