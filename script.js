@@ -36,7 +36,7 @@ const currencyUnits = {
 
 function updateStatus(){
 
-    cashStatus.innerHTML = `<h3>Change in drawer:</h3>
+    cashStatus.innerHTML = `
     <p>Pennies: $${cid[0][1]}</p>
     <p>Nickels: $${cid[1][1]}</p>
     <p>Dimes: $${cid[2][1]}</p>
