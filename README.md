@@ -1,7 +1,7 @@
 # Front End Certification Project #4 – *freeCodeCamp*
 
 Hey there! 👋  
-This is my 4th project for the freeCodeCamp Front End Development Certification.
+This is my 4th project for the freeCodeCamp JavaScript Algorithms and Data Structures Certification.
 
 ## Notes
 
